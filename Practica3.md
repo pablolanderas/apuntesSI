@@ -57,7 +57,7 @@ Este apartado se encuentra en el archivo *``/etc/shadow``* con la siguiente estr
 
 - nombre: El nombre del usuario
 - contraseña: La contraseña encriptada del usuario ([estructura](#struct_password))
-- ultimo_cambio: La fecha del último cambio de contraseña en formato de días desde el 1 de enero de 1970 ([pagina para calcularlo](https://espanol.epochconverter.com/))
+- ultimo_cambio: La fecha del último cambio de contraseña en formato de días desde el 1 de enero de 1970 (<a href="https://espanol.epochconverter.com/" target="_blank">pagina para calcularlo</a>)
 - dias_min: El número mínimo de días que deben pasar antes de que se pueda cambiar la contraseña
 - dias_max: El número máximo de días que la contraseña es válida antes de que deba ser cambiada
 - dias_aviso: El número de días antes de que la contraseña expire que se mostrará un aviso

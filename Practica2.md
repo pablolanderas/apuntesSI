@@ -167,6 +167,3 @@ Para desencriptar un archivo se utiliza el siguiente comando:
         openssl enc -d -aes-256-cbc -in <archivo> -out <salida>
 
 Durante la ejecucion te pedira la contraseña y saldra el archivo descifrado correctamente
-
-
-

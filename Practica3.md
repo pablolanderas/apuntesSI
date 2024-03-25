@@ -187,4 +187,3 @@ La estructura es la siguiente:
 ## Comandos de interes <a id="comd_interes">
 
 - *``which [comando]``*: Sirve para ver donde esta situado un comando
-

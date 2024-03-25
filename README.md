@@ -1,6 +1,4 @@
-
 # <img src="https://cdn.icon-icons.com/icons2/195/PNG/256/OS_Linux_23399.png" width="50"> Apuntes Sistemas Informaticos
-
 
 - [Practica 2](Practica2.md)
     - [Añadir un disco a la maquina virtual](Practica2.md#add_disc_maq)
@@ -32,3 +30,11 @@
         - [Cambiar permisos](Practica3.md#change_perm)
     - [SUDO](Practica3.md#sudo)
     - [Comandos de interes](Practica3.md#comd_interes)
+- [Practica 4](Practica4.md)
+    - [Instalacion desde codigo fuente](Practica4.md#rep_inst)
+    - [Instalacion desde paquete](Practica4.md#inst_pack)
+        - [Instalar un paquete](Practica4.md#apt_install)
+        - [Buscar un paquete](Practica4.md#apt_search)
+        - [Refrescar lista de paquetes](Practica4.md#apt_update)
+        - [Actualizar los paquetes](Practica4.md#apt_upgrade)
+        - [Añadir repositorios](Practica4.md#apt_add_repository)

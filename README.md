@@ -1,4 +1,6 @@
-# apuntesSI
+
+# <img src="https://cdn.icon-icons.com/icons2/195/PNG/256/OS_Linux_23399.png" width="50"> Apuntes Sistemas Informaticos
+
 
 - [Practica 2](Practica2.md)
     - [Añadir un disco a la maquina virtual](Practica2.md#add_disc_maq)
@@ -17,3 +19,16 @@
     - [Encriptacion y desencriptacion](Practica2.md#encriptacion_desencriptacion)
         - [Encriptacion](Practica2.md#encriptacion)
         - [Desencriptacion](Practica2.md#desencriptacion)
+- [Practica 3](Practica3.md)
+    - [Grupos](Practica3.md#grupos)
+    - [Usuarios](Practica3.md#usuarios)
+    - [Seguridad del usuario](Practica3.md#user_security)
+    - [Añadir usuario](Practica3.md#add_user)
+    - [Eliminar usuario](Practica3.md#del_user)
+    - [Cambiar contraseña a usuario](Practica3.md#change_password)
+    - [Estructura de las contraseñas](Practica3.md#struct_password)
+    - [Permisos de ficheros y archivos](Practica3.md#perm_fich_arch)
+        - [Ver permisos](Practica3.md#see_perm)
+        - [Cambiar permisos](Practica3.md#change_perm)
+    - [SUDO](Practica3.md#sudo)
+    - [Comandos de interes](Practica3.md#comd_interes)

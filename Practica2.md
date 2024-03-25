@@ -101,7 +101,7 @@ Hay algunas particiones que no estan instaladas, en caso de necesitarlas se pued
 
 ### Montar la particion <a id="montar_particion">
 
-Motar la particion asigna la particion a un directorio, esto hace que se pueda acceder a los datos. Ten en cuenta que cuando montas una particion en un sistema de ficheros, no se podra acceder a los ficheros que habia antes, ya que funciona como un puntero y cuando accedes a la carpeta te llevara a la particion si quieres volver a acceder a los archivos es tan sencillo como [desmontarlo](#TODO).
+Motar la particion asigna la particion a un directorio, esto hace que se pueda acceder a los datos. Ten en cuenta que cuando montas una particion en un sistema de ficheros, no se podra acceder a los ficheros que habia antes, ya que funciona como un puntero y cuando accedes a la carpeta te llevara a la particion si quieres volver a acceder a los archivos es tan sencillo como [desmontarlo](#des_disc).
 
 Antes de montar una particion debes de haberle [fijado el sistema de ficheros](#fijar_sis_ficheros)
 

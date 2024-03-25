@@ -46,3 +46,5 @@ ssh -p 2222 root@127.0.0.1
         - [Refrescar lista de paquetes](Practica4.md#apt_update)
         - [Actualizar los paquetes](Practica4.md#apt_upgrade)
         - [Añadir repositorios](Practica4.md#apt_add_repository)
+
+<img src="https://cdn.nubika.es/wp-content/uploads/2021/05/caracteristicas-del-orangutan.jpg">

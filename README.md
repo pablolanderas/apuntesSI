@@ -1,5 +1,13 @@
 # <img src="https://cdn.icon-icons.com/icons2/195/PNG/256/OS_Linux_23399.png" width="50"> Apuntes Sistemas Informaticos
 
+### Conectarte por SSH
+
+~~~
+ssh -p 2222 root@127.0.0.1
+~~~
+
+### Indice
+
 - [Practica 2](Practica2.md)
     - [Añadir un disco a la maquina virtual](Practica2.md#add_disc_maq)
     - [Inodos](Practica2.md#inodos)

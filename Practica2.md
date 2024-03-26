@@ -16,8 +16,9 @@
     - [Redimensionar particiones](#redimenisonar_part)
     - [Comandos de interres](#comd_interes)
 - [Encriptacion y desencriptacion](#encriptacion_desencriptacion)
-    - [Encriptacion](#encriptacion)
-    - [Desencriptacion](#desencriptacion)
+    - [Encriptacion de archivo](#encriptacion_arch)
+    - [Desencriptacion de archivo](#desencriptacion_arch)
+    - [Encriptacion de particion](#encriptacion_part)
 
 ## Añadir un disco a la maquina virtual <a id="add_disc_maq">
 
@@ -152,7 +153,7 @@ Se pueden ver las configuranciones que se pueden usar con ``man`` pero alguna ut
 
 ## Encriptacion y desencriptacion <a id="encriptacion_desencriptacion">
 
-### Encriptacion <a id="entriptacion">
+### Encriptacion de archivo <a id="entriptacion_arch">
 
 Para encriptar un archivo se utiliza el siguiente comando:
 
@@ -160,10 +161,33 @@ Para encriptar un archivo se utiliza el siguiente comando:
 
 En el comando te pedira la contraseña con la cual se podra desencriptar el archivo
 
-### Desencriptacion <a id="desencriptacion">
+### Desencriptacion de archivo <a id="desencriptacion_arch">
 
 Para desencriptar un archivo se utiliza el siguiente comando:
 
         openssl enc -d -aes-256-cbc -in <archivo> -out <salida>
 
 Durante la ejecucion te pedira la contraseña y saldra el archivo descifrado correctamente
+
+### Encriptacion de particion <a id="encriptacion_part">
+
+1. Descargar la herramienta
+
+                apt-get update
+                apt-get install cryptsetup
+
+2. Crear el contenedor privado para la paticion
+
+                cryptsetup luksFormat <particion>
+
+3. Abrir el contenedor
+
+                cryptsetup luksOpen <particion> <nombre_desbloqueo>
+
+4. Crear el sistema de archivos como explicado anteriormente, pero utilizando la nueva particion que se ha creado:
+
+                /sbin/mkfs -t <fstype> /dev/mapper/<nombre_desbloqueo>
+
+5. Montar la particion
+
+                mount /dev/mapper/<nombre_desbloqueo> <dir_montado>

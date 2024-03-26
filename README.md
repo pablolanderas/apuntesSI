@@ -25,7 +25,7 @@ ssh -p 2222 root@127.0.0.1
     - [Encriptacion y desencriptacion](Practica2.md#encriptacion_desencriptacion)
         - [Encriptacion de archivo](Practica2.md#encriptacion_arch)
         - [Desencriptacion de archivo](Practica2.md#desencriptacion_arch)
-        - [Encriptacion de particione](Practica2.md#encriptacion_part)
+        - [Encriptacion de particion](Practica2.md#encriptacion_part)
 - [Practica 3](Practica3.md)
     - [Grupos](Practica3.md#grupos)
     - [Usuarios](Practica3.md#usuarios)

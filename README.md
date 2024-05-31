@@ -47,5 +47,14 @@ ssh -p 2222 root@127.0.0.1
         - [Refrescar lista de paquetes](Practica4.md#apt_update)
         - [Actualizar los paquetes](Practica4.md#apt_upgrade)
         - [Añadir repositorios](Practica4.md#apt_add_repository)
+- [Practica 5](Practica5.md)
+    - [Interfaces](Practica5.md#interfaces)
+    - [Configuracíon de las interfaces](Practica5.md#conf_interfaces)
+    - [ARP](Practica5.md#arp)
+    - [Tablas de rutas](Practica5.md#tablas_de_rutas)
+    - [Resolucion de nombres](Practica5.md#resol_nombres)
+    - [Archivo de configuracion de DNS](Practica5.md#arch_conf_dns)
+    - [Utilizar el ordenador como router (ruteador)](Practica5.md#routeador)
+    - [Comandos utiles](Practica5.md#comandos_utiles)
 
 <img src="https://cdn.nubika.es/wp-content/uploads/2021/05/caracteristicas-del-orangutan.jpg">

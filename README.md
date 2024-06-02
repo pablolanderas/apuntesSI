@@ -56,5 +56,16 @@ ssh -p 2222 root@127.0.0.1
     - [Archivo de configuracion de DNS](Practica5.md#arch_conf_dns)
     - [Utilizar el ordenador como router (ruteador)](Practica5.md#routeador)
     - [Comandos utiles](Practica5.md#comandos_utiles)
+- [Practica 7](Practica7.md)
+    - [LVM (Logical Volume Manager)](Practica7.md#lvm)
+        - [Administador de LVM (lvm2)](Practica7.md#administrador_lvm)
+    - [RAID](Practica7.md#raid)
+        - [Niveles](Practica7.md#raid_lev)
+        - [Acciones](Practica7.md#raid_acc)
+        - [Crear una raid](Practica7.md#raid_create)
+        - [Recuperar un disco](Practica7.md#raid_recuperate)
+    - [Backups](Practica7.md#backups)
+        - [Realizar backup](Practica7.md#blackup_make)
+        - [Restaurar backup](Practica7.md#blackup_restore)
 
 <img src="https://cdn.nubika.es/wp-content/uploads/2021/05/caracteristicas-del-orangutan.jpg">

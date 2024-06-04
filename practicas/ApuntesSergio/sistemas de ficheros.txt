@@ -1,0 +1,4 @@
+2-
+stat muestra el inodo
+con blocks en debugfs podemos ver los bloques del inodo
+con block_dump muestra el bloque en si

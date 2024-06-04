@@ -1,0 +1,6 @@
+2-descargar codigo desomprimir resolver depedencias con aptget y compilar e instalar con los make y make install
+3- compilar con el make y añadir todo lo necesario con insmod, en este caso se tuvo que añadir el module1 primero que el 2
+4-editar /proc con sysctl, para que sea permamente en sysctl.conf
+5- en el 6.3.2 estan muchos modulos ya dentro del kernel
+6-echo 1 > /dev/tty1 desde la 2
+7-usar mknod b disco 11 0(11 y 0 vienen en el el archivo de /dev)

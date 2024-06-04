@@ -1,0 +1,15 @@
+2-crear particiones
+hacer las partciones volumenes fisicos
+crear vg
+crear lv con lvcreate vg1 -l 100%FREE -l vol1
+usar mkfs y mount
+para añadir el 4 
+vgextend + lvextend -l +100%FREE /dev/vg1/vol1
+umount
+resize2fs y mount otra vez
+3-
+crear con mdadm el raid5
+simular fallo con mdadm -f
+eliminar disco con mdadm -r
+añadir el otro con mdadm -a 
+mirar proceso en /proc/mdstat

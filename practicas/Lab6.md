@@ -32,7 +32,7 @@ Movemos el kernel al EFI, para eso hay que montar sda1 y sda2, sacar de sda2 el 
 
 Para econtrar los archivos usamos un find -name "\<nombre>"
 
-Los movemos y creamos el archivo startup.nsh, que va a ser un script que se ejecute nada mas iniciar la maquina. En este script añadiremos lo siguiente:
+Los movemos y creamos el archivo , que va a ser un script que se ejecute nada mas iniciar la maquina. En este script añadiremos lo siguiente:
 
 ~~~
 FS0:     # PARA ACEDER AL EFI

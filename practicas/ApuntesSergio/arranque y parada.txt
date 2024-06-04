@@ -1,0 +1,36 @@
+1-
+comando efibootmgr -v
+el archivo a editar es simx64.efi
+2-
+volver a poner el nombre normal
+3-
+se va a la mierda
+4-
+metes el disco
+find direccion -name "archivo"
+montas el sda2 en una carpeta y el sda1 en otra buscas los archivos y los mueves a la carpeta efi del sda1
+ruta absoluta del kernel intird=ruta absoluta del init e indicar disco root
+escribir lo mismo en el script en la carpeta efi
+5-
+
+6-
+instalar
+7-
+crear nueva entrada
+efibootmgr -c -d /dev/sda -p 1 -L "etiqueta" -l "/EFI/debian/shimx64.efi"
+8-
+al arrancar ir a la consola de comandos de grub
+linux /boot/(nombre kernel) root=/dev/sda2
+initrd /boot/initrd...
+9-
+escribir los comandos anteriores en el fichero 40_custom con una menuentry 'etiqueta' {codigo}
+indicar en default que se arranca my-debian por defecto
+PARTE2
+1-comandos diapositiva 26 y descomprime ese sistema de ficheros
+si contiene el driver para ese sistema de ficheros
+2-
+usar systemctl 
+3-poner cron y networking en want
+en service en execstart la ruta del script
+y en install que arranque cuando arranque multiuser con el wanted by
+4- si paras cron se para nuestro sevicio y al volver a arrancar nuestro servicio vuelve a arrancar cron

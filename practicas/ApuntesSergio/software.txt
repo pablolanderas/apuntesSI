@@ -1,0 +1,7 @@
+2-ver ultima version entre todos los mirros(usar mas cercano), descargar con wget,  resolver dependencias, ejecutar configuracion + make
+3- usar apt-get source --compile + dpkg -i mas startx, ademas de resolver dependencias
+4-apt-cache show sed, apt-get cachelog sed
+5-apt-key list
+6-cambiar /etc/apt/sources.list
+7- instalar key de google, añadir repositorio de google chrome a sources.list y apt-get install
+8-seguir pasos tranparencia (no terminado falta de espacio)

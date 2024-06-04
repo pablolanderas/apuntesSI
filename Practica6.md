@@ -244,6 +244,8 @@ Los servicios son cargados por el *init*. Estos se pueden encontrar en distintas
 - *Servicios de paquetes del sistema*: ``/lib/systemd/system/`` 
 - *Servicios temporales*: ``/run/systemd/system/``
 
+En la [practica 8](Practica8.md#logs_monitor) puedes ver como monitorizar los logs
+
 ### Comandos de interes <a id="cmd_servicios">
 
 Con el comando ``systemctl`` puedes hacer muchas cosas con los servicios:

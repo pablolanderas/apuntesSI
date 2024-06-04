@@ -2,7 +2,34 @@
 
 #### Indice
 
-
+- [Fases del arranque](#fases_arranque)
+- [UEFI](#UEFI)
+    - [UEFI Shell](#UEFI_shell)
+        - [**Error en UEFI Shell**](#UEFI_shell_error)
+        - [**Disco de arranque**](#disco_arranque)
+    - [Orden de arranque](#ord_arranque)
+    - [Gestor de arranque](#gest_arranque)
+- [GRUB](#grub)
+    - [Configuracion](#grub_conf)
+        - [Archivo grub ](#arch_grub)
+        - [Directorio grub.d](#dir_grub.d)
+    - [Linea de comandos de GRUB](#grub_cmd)
+- [Kernel](#kernel)
+        - [Init Ramdisk](#ramdisk)
+- [Servicios](#servicios)
+    - [Comandos de interes](#cmd_servicios)
+        - [Ver los servicios:](#cmd_servicios_ver_servicios)
+        - [Iniciar/Detener un servicio:](#cmd_servicios_iniciar_detener_servicio)
+        - [Reiniciar un servicio ](#cmd_servicios_reiniciar_servicio)
+        - [Recargar la informacion de un servicio](#cmd_servicios_recargar_servicio)
+        - [Habilitar/Deshabilitar un servicio para que arranque automaticamente ](#cmd_servicios_habilitar_deshabilitar_servicio)
+        - [Mostrar las dependencias de un servicio](#cmd_servicios_dependencias)
+        - [Recargar los servicios ](#cmd_servicios_daemon_reload)
+    - [Implementacion de servicios](#impl_servicios)
+        - [\[Unit\]](#impl_servicios_unit)
+        - [\[Service\]](#impl_servicios_service)
+        - [\[Install\]](#impl_servicios_install)
+        - [Timers](#servicios_timer)
 
 ## Fases del arranque <a id="fases_arranque">
 
@@ -280,6 +307,10 @@ Para que un servicio no arranque automaticamente cuando se inicia el sistema, se
 
 Para mostrar todas las dependencias se puede usar el comando mas ``list-dependencies``. Ademas, tambien puedes poner el nombre de un servicio despues para que te muestre unicamente las dependencias de ese servicio
 
+#### Recargar los servicios <a id="cmd_servicios_daemon_reload">
+
+Para volver a cargar los servicios por si se ha modificado o añadido un servicio nuevo hay que utilizar el comando mas  ``daemon-reload``
+
 ### Implementacion de servicios <a id="impl_servicios">
 
 Para implementar un servicio hay que generar un archivo de unidad con extension ``.service`` y guardarlo en uno de los directorios que se indican [al principio](#servicios). Este archivo tiene el siguiente formato:
@@ -306,10 +337,12 @@ Este tipo de archivos tiene 3 partes con diferentes directivas:
 - [\[Service\]](#impl_servicios_service)
 - [\[Install\]](#impl_servicios_install)
 
+Una vez creado el archvio, [recargamos los servicios](#cmd_servicios_daemon_reload), en caso de que quieras que tu servicio arranque cuando arranque el sistema puedes [activarlo](#cmd_servicios_habilitar_deshabilitar_servicio) y por ultimo puedes [poner en marcha el servicio](#cmd_servicios_iniciar_detener_servicio). Para ejecutarlo de forma recursiva en el tiempo se pueden utilizar los [timer](#servicios_timer). En caso de usar el timer, lo que hay que activar y/o poner en marcha es el .timer, no el servicio
+
 #### \[Unit] <a id="impl_servicios_unit">
 
 - *Description/Documentation*: Una descripcion breve de lo que hacer el servicio (Description) y su documentacion (Documentation)
-- *Requires/Wants*: Lista de unidades que deben estar activas para que esta unidad se inicie (Requires) y lista de unidades que se desea que estén activas, pero no es obligatorio (Wants). Todas estas se separan con espacios entre una y otra
+- *Requires/Wants*: Lista de unidades que deben estar activas para que esta unidad se inicie (Requires) y lista de unidades que se desea que estén activas, pero no es obligatorio (Wants). En caso de ser Requires, activa el servicio servicio que necesite si no esta activo. Todas estas se separan con espacios entre una y otra
 - *Before/After*: Especifica que esta unidad debe iniciarse antes (Before) o despues (After) de las unidades listadas. . Todas estas se separan con espacios entre una y otra
 
 #### \[Service] <a id="impl_servicios_service">
@@ -332,5 +365,56 @@ Este tipo de archivos tiene 3 partes con diferentes directivas:
 
 #### \[Install] <a id="impl_servicios_install">
 
-- *WantedBy*:  se utiliza para especificar una dependencia similar a la directiva Wants en la sección [Unit]. Cuando una unidad con la directiva WantedBy se habilita, se crea un directorio en la ubicación /etc/systemd/system/[unit].wants. Dentro de este directorio se crea un enlace simbólico que establece la dependencia entre las unidades
+- *WantedBy*:  se utiliza para especificar una dependencia similar a la directiva Wants en la sección [Unit]. Cuando una unidad con la directiva WantedBy se habilita, se crea un directorio en la ubicación /etc/systemd/system/[unit].wants. Dentro de este directorio se crea un enlace simbólico que establece la dependencia entre las unidades. **Por defecto utilizar ``multi-user.target``**
 - *RequiredBy*: se utiliza para especificar las unidades que requieren la unidad actual. Si la unidad actual se habilita, las unidades enumeradas en la directiva RequiredBy también se habilitarán automáticamente. Establece una dependencia fuerte en la que una unidad es necesaria para el funcionamiento de otra unidad
+
+#### Timers <a id="servicios_timer">
+
+Los timers se utilizan para que se ejecute repetidamente en el tiempo, especificando cada cuanto tiempo quieres que se ejecute.
+
+El servicio que utiliza el timer, en [Unit], debe de tener ``Requires=cron.service``.Despues, hay que crear un nuevo archivo en el mismo directorio con la en vez de con .service con .timer que debe de tener el siguiente contenido:
+
+~~~bash
+[Unit]
+Description=< Descripcion del timer >
+
+[Timer]
+< Directiva del timer >
+
+[Install]
+WantedBy=timers.target
+~~~
+
+Estas son algunas de las directivas que puedes añadirle al [Timer]:
+
+- *OnBootSec*: Tiempo que debe transcurrir después de que el sistema arranque. Ejemplo: `OnBootSec=10min` (El temporizador se activa 10 minutos después del arranque del sistema). Para este y el resto que utilice tiempos se pueden usar los siguietnes:
+    - *s*: Segundos
+    - *min*: Minutos
+    - *h*: Horas
+    - *day*: Días
+    - *w*: Semanas
+    - *ms*: Milisegundos
+    - *us*: Microsegundos
+    - *ns*: Nanosegundos 
+- *OnUnitActiveSec*: El tiempo que debe de pasar entre una activación y la siguiente `OnUnitActiveSec=60` (El temporizador se activa cada 60 segundos)
+- *OnActiveSec*: Tiempo que debe transcurrir después de que el temporizador se active por primera vez. Ejemplo: `OnActiveSec=5min` (El temporizador se activa 5 minutos después de que el sistema arranque o el temporizador se active).
+- *OnStartupSec*: Tiempo que debe transcurrir después de que `systemd` se inicie. Ejemplo: `OnStartupSec=15min` (El temporizador se activa 15 minutos después de que `systemd` se inicie).
+- *OnCalendar*: Especifica el tiempo utilizando una sintaxis de calendario más flexible y poderosa. Ejemplo: `OnCalendar=*-*-01 00:00:00` (El temporizador se activa a medianoche del primer día de cada mes). Esto se configura de la siguiente manera:
+
+    El calendario tiene el siguiente formato:  
+    ``OnCalendar=<año>-<mes>-<día> <hora>:<minuto>:<segundo>``
+    
+    A parte, se puede especificar dia de la semana escribiendo el dia (o los dias separados con coma) al principio y separandolo con una espacio del año. Tienen este formato los dias de la semana: ``Mon``, ``Tue``, ``Wed``, ``Thu``, ``Fri``, ``Sat``, ``Sun``
+
+    Despues para cada valor se puede hacer lo siguiente:
+
+    - *"\*":* sirve para decir que es indiferente: ``*-*-* 02:00:00`` (Todos los dias a las 2 de la mañana)
+
+    - *"{}":* sirve para expecificar varias posibilidades: ``*-*-{5,10,20} 02:00:00`` (El dia 5, 10 y 20 de cada mes a las 2 de la mañana)
+
+    - *"/":* sirve para especificar cadacuanto tiempo, y indicar un principio si quiere:s ``-*-5/10 02:00:00`` (Se activará cada 10 días, comenzando el día 5 de cada mes a las 02:00:00)
+
+    - *".."* sirve para especificar rangos: ``*-*-* 09..17:00:00`` (Todos los días desde las 9, hasta las 17 cada hora)
+
+
+

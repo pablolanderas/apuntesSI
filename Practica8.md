@@ -2,6 +2,24 @@
 
 #### Indice
 
+- [Monitorizacion de logs](#logs_monitor)
+- [Gestion de procesos](#gest_proc)
+    - [Monitorizar procesos](#mon_proc)
+    - [Logs de procesos](#logs_proc)
+    - [Detener procesos](#kil_proc)
+    - [Prioridad de los procesos](#proc_prio)
+    - [Limitacion de recursos](#limt_rec)
+- [Gestion de memoria](#gest_mem)
+    - [Limintar memoria](#lim_mem)
+        - [Ver las cuotas](#lim_mem_ver)
+        - [Preparar el sistema](#lim_mem_prep)
+        - [Editar las cuotas](#lim_mem_edit)
+    - [Memoria Swap](#men_swap)
+        - [Memoria Swap en particion](#mem_swap_pat)
+        - [Memoria Swap en archivo](#mem_swap_arch)
+        - [Eliminar memoria Swap](#mem_swap_del)
+- [Comandos utiles](#utl_cmd)
+
 ## Monitorizacion de logs <a id="logs_monitor">
 
 Para monitorizar los logs de los procesos se utiliza el comando ``journalctl``. Ademas, si utilizas algunos argumentos puedes ver mas infomracion:
@@ -69,7 +87,7 @@ El otro comando, `renice`, puede cambiarle la prioridad a 3 tipos distitos, a un
 
 Para limitar los recursos se utiliza el comando `ulimit`. Se puede usar para establecer o mostrar varios tipos de límites de recursos. Los límites pueden ser "soft" (blandos) o "hard" (duros). Los límites "soft" pueden ser incrementados por el usuario, pero no pueden exceder los límites "hard". Los límites "hard" solo pueden ser incrementados por el superusuario (root). 
 
-Con el comando `ulimit -a` puedes ver los limites actuales, en este te sale los comandos para modificar los valores **(ten cuidado porque los cambios no son permanentes, son loso para la sesion, como se hace eso esta explicado despues)**, pero igualmente aqui dejo algunos:
+Con el comando `ulimit -a` puedes ver los limites actuales, en este te sale los comandos para modificar los valores **(ten cuidado porque los cambios no son permanentes, son solo para la sesion, como se hace eso esta explicado despues)**, pero igualmente aqui dejo algunos:
 
 - *Número máximo de archivos abiertos (file descriptors)*: -n 
 - *Tamaño máximo de los archivos que se pueden crear*: -f 
@@ -110,6 +128,84 @@ Para realizar los cambios de forma pemanente te utiliza el archivo ``/etc/securi
     - *rtprio*: Valor máximo de prioridad de tiempo real permitido al usuario.
 
 - **valor:** el valor que se le quiere asignar
+
+## Gestion de memoria <a id="gest_mem">
+
+### Limintar memoria <a id="lim_mem">
+
+Esto se realiza mediante el sitema de cuotas de disco, para poder hacer esto, priemro hay que preparar el sistema
+
+#### Ver las cuotas <a id="lim_mem_ver">
+
+Para ver las cuotas de un usuario se utilia el comando ``quota -v <usuario>``
+
+Tambien puedes mirar las cuotas de una particion con ``repquota <dir_donde_montado>``
+
+#### Preparar el sistema <a id="lim_mem_prep">
+
+Si no te funciona algun comando, igual es necesario que instales el paquete con el siguiente comando `apt-get install quota`
+
+Los siguientes pasos son los que hay que seguir para preparar el sistema para poder usar las cuotas de disco:
+
+1. Para eso hay que editar el archivo `/etc/fstab`, en el cuarto valor y añadir `usrquota` (para si se va a usar para usuarios) y/o `grpquota` (si se va a usar para grupos) detras del defaults separandolo por comas, aqui tienes un ejemplo:
+    ~~~bash
+    /dev/sda1  /home  ext4  defaults,usrquota,grpquota  0  2
+    ~~~
+2. Despues, hay resetear las particiones con el comando `mount -a`
+3. Ahora, hay que crear los archivos de las cuotas, para esto se utiliza el comando `quotacheck -cug <dir_donde_particion_montado>`, esto generara los archivos ``aquota.user`` y ``aquota.group`` en la raíz de la particion
+4. Por ultimo, hay que activar las cuotas con el comando `quotaon <dir_donde_pariticion_motada>`
+
+#### Editar las cuotas <a id="lim_mem_edit">
+
+Para activar y desactivar las cuotas se utilizan los comandos  ``quotaon``/``quotaoff`` mas la direccion de la particion que se quiere activar o desactivar.
+
+Para editar las cuotas de un usuario o un grupo (añadiendo `-g ` antes del nombre) se utiliza el comando `edquota <user>` este te abre un editor de texto con una tabla en la que puedes ver y editar los siguientes valores:
+
+- *blocks*: Número de bloques de 1KB que el usuario está utilizando.
+- *soft*: Límite de advertencia de bloques.
+- *hard*: Límite estrictamente máximo de bloques.
+- *inodes*: Número de inodos que el usuario está utilizando.
+- *soft y hard para inodos*: Límites de advertencia y máximos de inodos
+
+### Memoria Swap <a id="men_swap">
+
+Puedes **verificar la memoria swap** con el siguiente comando: `swapon --show`
+
+El manejo de memoria swap en sistemas Linux es un mecanismo que permite al sistema operativo utilizar espacio en disco como una extensión de la memoria RAM física. Esto es especialmente útil cuando la RAM está completamente ocupada y se necesitan más recursos de memoria para continuar ejecutando aplicaciones y procesos. Esto se puede hacer sobre una [particion](#mem_swap_pat) o sobre un [archivo](#mem_swap_arch)
+
+#### Memoria Swap en particion <a id="mem_swap_pat">
+
+Para eliminar una memoria swap se puede usar el siguiente comando: `swapoff <dir_mem>`
+
+Para hacer esto hay que [crear una particion de un disco](Practica2.md#hacer_part), configurar esta particion como swap y activarla. Por ultimo, para que sea permanente hay que hay que añadirlo al `/etc/fstab`. Esto se realiza así:
+
+1. **Realizar la particion:** se hace la particion ([ver aqui](Practica2.md#hacer_part))
+2. **Configrar la particion como swap:** para configurarla como swap se utiliza el siguiente comando: ``mkswap <dir_particion>``
+3. **Activar el swap:** para activarlo se utiliza el comando: ``swapon <dir_particion>``
+4. **Hacerlo permanente:** para hacerlo permanente hay que editar el archivo `/etc/fstab` con la siguiente plantilla
+
+    ~~~bash
+    <dir_particion> none swap sw 0 0
+    ~~~
+
+#### Memoria Swap en archivo <a id="mem_swap_arch">
+
+Para hacer la memoria swap en un archivo es igual que en la particion, pero creando un archivo con un tamaño fijo y especificando la direccion del archivo en vez de la particion:
+
+1. **Crear el archivo:** hay que crear un archivo, con el tamaño ([ver formato de tamaños](Practica2.md#tabla_tam_part)) que se quiera usar para el swap y darle los permisos necesarios:
+    ~~~bash
+    fallocate -l <tamaño_archivo> <dir_archivo>
+    chmod 600 <dir_archivo>
+    ~~~
+2. **Configrar la particion como swap:** para configurarla como swap se utiliza el siguiente comando: ``mkswap <dir_archivo>``
+3. **Activar el swap:** para activarlo se utiliza el comando: ``swapon <dir_archivo>``
+4. **Hacrlo permanente:** para hacerlo permanente hay que editar el archivo `/etc/fstab` con la siguiente plantilla
+
+    ~~~bash
+    <dir_archivo> none swap sw 0 0
+    ~~~
+
+#### Eliminar memoria Swap <a id="mem_swap_del">
 
 ## Comandos utiles <a id="utl_cmd">
 

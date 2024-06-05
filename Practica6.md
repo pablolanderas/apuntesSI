@@ -63,7 +63,7 @@ Este hace 2 cosas:
 
     Las aplicaciones deben residir en un sistema de archivos definido por UEFI: Sistema de archivos FAT (formato de la Partición del Sistema EFI o ESP).
 
-    Para buscar las aplicaciones y cargadores UEFI consulta la tabla de particiones GPT para identificar la ESP(particion VFAT), lee el archivo objetivo (el .efi) y lo ejecuta. Por defecto en Debian la ruta del archivo es ``/efi/boot/bootx64.ef``, esto desde la shell de UEFI, pero desde el sistema encendido es ``/boot/efi/EFI/debian/grubx64.efi``
+    Para buscar las aplicaciones y cargadores UEFI consulta la tabla de particiones GPT para identificar la ESP(particion VFAT), lee el archivo objetivo (el .efi) y lo ejecuta. Por defecto en Debian la ruta del archivo es ``/efi/boot/bootx64.efi``, esto desde la shell de UEFI, pero desde el sistema encendido es ``/boot/efi/EFI/debian/grubx64.efi``
 
     **Si no se utiliza un cargador de arranque** (soporte EFI stub habilitado en el kernel), todos los archivos necesarios para cargar el sistema operativo (kernel, ramdisk, etc.) deben estar disponibles en esta partición
 

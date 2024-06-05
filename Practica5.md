@@ -43,7 +43,7 @@ Las interfaces se configuran desde el archivo ``/etc/network/interfaces``. Aqui 
 
     - ``<metod>``: El método de configuración de la dirección IP para la interfaz, que puede ser ``dhcp`` para configuración automática (selección de IP dinámica) o ``static`` para configuración manual (estática).
 
-        Seguido a esa linea se puede añadir informacion sobre la red en caso de ser una red estatica, se hace con una tabulacion, el parametro, un espacio y el valor. Estos son los posibles parametros:
+        En las siguientes lineas se puede añadir informacion sobre la red en caso de ser una red estatica, se hace con una tabulacion, el parametro, un espacio y el valor. Estos son los posibles parametros:
 
         - *address*: la direccion IP
 

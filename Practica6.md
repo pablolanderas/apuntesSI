@@ -92,7 +92,7 @@ Si no encuentras estos archivos o existe algun problema con el arranque, hay que
 
 Un disco de arranque es un medio de almacenamiento (como un CD, DVD, USB, o disquete) que contiene todos los archivos necesarios para iniciar un sistema operativo o para realizar tareas de recuperación y mantenimiento del sistema
 
-Lo puedes descargar [aqui](https://www.ce.unican.es/SI/SystemRescueCD/systemrescuecd-x86-5.2.1.iso) con el usuario ``alumno`` y la contraseña ``alu_SI``
+Lo puedes descargar <a href="https://www.ce.unican.es/SI/SystemRescueCD/systemrescuecd-x86-5.2.1.iso" target="_blank">aqui</a> con el usuario ``alumno`` y la contraseña ``alu_SI``
 
 Una vez descargado, se añade a la maquina virtual. A la hora de iniciar, habra dos FS, el 0 y el 1. Uno de estos es el disco de arranque, si te equivocas puedes usar ``exit``. Dentro de esto ejecuta el archivo que esta al final de la carpeta para iniciar la reparacion
 

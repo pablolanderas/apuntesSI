@@ -202,7 +202,7 @@ Durante el arranque desde esta consola puedes editar las opciones de arranque de
 
 - *set root=\<path>*: configura la particion raiz donde se encuentran los archivos kernel y initrd
 
-- *linux \<path-to-kernel> root=\<path> init=\<dir>*: carga el kernel de Linux desde la partición configurada. La ultima parte, la del init no es necearia, pero si se utiliza puedes hacer que arranque un ejecutable de primeras como por ejemplo un `/bin/bash`
+- *linux \<path-to-kernel> root=\<path> init=\<dir>*: carga el kernel de Linux desde la partición configurada. La ultima parte, la del init no es necearia, pero si se utiliza puedes hacer que arranque un ejecutable de primeras como por ejemplo un `/bin/bash`. Si haces esto, por defecto el root se abriar en modo lectura unicmanete, para que puedas editarlo debes de utilizar el siguiente comando `mount -o remount,rw /`
 
 - *initrd \<command>*: Ejecuta un binario especifico en vez de ``/sbin/init`` como proceso de inicio
 

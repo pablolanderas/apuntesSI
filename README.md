@@ -2,9 +2,19 @@
 
 ### Conectarte por SSH
 
-~~~
+~~~bash
 ssh -p 2222 root@127.0.0.1
 ~~~
+
+### Compartir archivos
+
+**Conectarse**
+
+~~~bash
+sftp -P 2222 root@127.0.0.1
+~~~
+
+put/get \<origen> \<destino>: para enviar/recibir archivo
 
 ### Indice
 

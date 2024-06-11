@@ -367,7 +367,7 @@ Una vez creado el archvio, [recargamos los servicios](#cmd_servicios_daemon_relo
 
 #### \[Install] <a id="impl_servicios_install">
 
-- *WantedBy*:  se utiliza para especificar una dependencia similar a la directiva Wants en la sección [Unit]. Cuando una unidad con la directiva WantedBy se habilita, se crea un directorio en la ubicación /etc/systemd/system/[unit].wants. Dentro de este directorio se crea un enlace simbólico que establece la dependencia entre las unidades. **Por defecto utilizar ``multi-user.target``**
+- *WantedBy*:  se utiliza para especificar una dependencia similar a la directiva Wants en la sección [Unit]. Cuando una unidad con la directiva WantedBy se habilita, se crea un directorio en la ubicación /etc/systemd/system/[unit].wants. Dentro de este directorio se crea un enlace simbólico que establece la dependencia entre las unidades. Indica el target que disparará este servicio. **Por defecto utilizar ``multi-user.target``**
 - *RequiredBy*: se utiliza para especificar las unidades que requieren la unidad actual. Si la unidad actual se habilita, las unidades enumeradas en la directiva RequiredBy también se habilitarán automáticamente. Establece una dependencia fuerte en la que una unidad es necesaria para el funcionamiento de otra unidad
 
 #### Timers <a id="servicios_timer">

@@ -75,7 +75,7 @@ apt-get upgrade
 
 ### Añadir repositorios <a id="apt_add_repository">
 
-Para añadir un repositorio nuevo hay que añadirlo al archivo *``/etc/apt/sources.lst``*. Este archivo tiene la siguiente estructura:
+Para añadir un repositorio nuevo hay que añadirlo al archivo *``/etc/apt/sources.list``*. Puedes obtener el [paquete inicial de clase](recursos/sources.list). Este archivo tiene la siguiente estructura:
 
 ~~~
 <tipo_archivo> <URL> <distribucion> <componentes>

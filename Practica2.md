@@ -125,6 +125,8 @@ La estructura del archivo es la siguiente:
 - *sis_fich*: El tipo de sistema de ficheros
 - *opc_mont*: Las opciones de montado, ponder ``defaults``
 
+Puedes comprobar el fichero con el comando `mount -a`, que monta el archivo
+
 ### Desmontar un disco <a id="des_disc">
 
 Para desmontar el disco de un directorio simplemente hay que escribir el siguiente comando:
@@ -150,6 +152,8 @@ Se pueden ver las configuranciones que se pueden usar con ``man`` pero alguna ut
 ### Comandos de interres <a id="comd_interes">
 
 - ``lsblk``<a id="lsblk">: Muestra la informacion de las particiones (con ``-f`` ves informacion extra)
+
+- `mount -a`: Monta el archivo `/etc/fstab`, por lo que puedes comprobar si esta funcionando correctamente
 
 ## Encriptacion y desencriptacion <a id="encriptacion_desencriptacion">
 

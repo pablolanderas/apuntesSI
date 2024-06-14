@@ -42,7 +42,7 @@ Estos son algunos de los comandos que se pueden utilizar:
 
 - ``vgcreate <nombreGrupo> <volumenes>``: con este comando puedes crear un volumen de grupo con el nombre que le asignes. El comando recibe todos los volumenes fisicos (que debes de haber creado antes) que quieras añadir al grupo. Estos se escriben separados por un espacio entre volumen y volumen
 
-- ``lvcreate <grupo> -n <nombreLV> -L <tamaño>``: con este comando puedes crear un volumen logico. Recibe el nombre del grupo, el nombre que le quieres asignar al volumen y el tamaño (sin + y -) que quieres asignarle al grupo ([ver como se escriben los tamaños](Practica2.md#tabla_tam_part)). Si en vez de un tamaño, quieres asignarle un porcentaje del disco disponible, hay que sustituir el `-L <tamaño>` por `-l <porcentaje>%FREE`, como por ejemplo `-l 100%FREE`
+- ``lvcreate <grupo> -n <nombreLV> -L <tamaño>``: con este comando puedes crear un volumen logico. Recibe el nombre del grupo, el nombre que le quieres asignar al volumen y el tamaño (sin + y -) que quieres asignarle al grupo ([ver como se escriben los tamaños](Practica2.md#tabla_tam_part)). Si en vez de un tamaño, quieres asignarle un porcentaje del disco disponible, hay que sustituir el `-L <tamaño>` por `-l <porcentaje>%FREE`, como por ejemplo `-l 100%FREE`. El volumen logico una vez creado, si quieres utilizarlo, montarlo, ... se encuentra en `/dev/<nombreGrupoLogico>/<nombreLV>`
 
 - ``vgextend <nonmbreGrupo> <particion/disco>``: con este comando se puede añadir un volumen fisico a un grupo ya existene.
 

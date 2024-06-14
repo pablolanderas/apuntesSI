@@ -139,7 +139,7 @@ Esto se realiza mediante el sitema de cuotas de disco, para poder hacer esto, pr
 
 Para ver las cuotas de un usuario se utilia el comando ``quota -v <usuario>``
 
-Tambien puedes mirar las cuotas de una particion con ``repquota <dir_donde_montado>``
+Tambien puedes mirar las cuotas de una particion con ``repquota <dir_donde_montado>`` (si utilizas `-s` te muestra bytes en vez de bloques)
 
 #### Preparar el sistema <a id="lim_mem_prep">
 
@@ -151,7 +151,7 @@ Los siguientes pasos son los que hay que seguir para preparar el sistema para po
     ~~~bash
     /dev/sda1  /home  ext4  defaults,usrquota,grpquota  0  2
     ~~~
-2. Despues, hay resetear las particiones con el comando `mount -a`
+2. Despues, hay resetear las particiones con el comando `mount -a` (ten cuidado, si ya lo habias montado, desmontalo antes y vuelvelo a montar con este comando)
 3. Ahora, hay que crear los archivos de las cuotas, para esto se utiliza el comando `quotacheck -cug <dir_donde_particion_montado>`, esto generara los archivos ``aquota.user`` y ``aquota.group`` en la raíz de la particion
 4. Por ultimo, hay que activar las cuotas con el comando `quotaon <dir_donde_pariticion_motada>`
 

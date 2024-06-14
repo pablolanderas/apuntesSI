@@ -391,6 +391,7 @@ WantedBy=timers.target
 
 Estas son algunas de las directivas que puedes añadirle al [Timer]:
 
+- *Persistent*: Si igualas esto a `true` le indica a systemd que debe intentar ejecutar el servicio programado incluso si el sistema estaba apagado o en estado suspendido en el momento en que el timer estaba originalmente programado para ejecutarse
 - *OnBootSec*: Tiempo que debe transcurrir después de que el sistema arranque. Ejemplo: `OnBootSec=10min` (El temporizador se activa 10 minutos después del arranque del sistema). Para este y el resto que utilice tiempos se pueden usar los siguietnes:
     - *s*: Segundos
     - *min*: Minutos

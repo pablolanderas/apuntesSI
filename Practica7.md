@@ -38,7 +38,7 @@ Estos son algunos de los comandos que se pueden utilizar:
 
 - ``vgdisplay -v``: para ver informacion <a id="cmd_ver_info_grupos">
 
-- ``pvcreate <particion/disco>``: con este comando puede crear un volumen fisico de una partición o de un disco que pases como parametro
+- ``pvcreate <particion/disco>``: con este comando puede crear un volumen fisico de una partición o de un disco que pases como parametro (preferible crear una particion aunque sea del disco entero)
 
 - ``vgcreate <nombreGrupo> <volumenes>``: con este comando puedes crear un volumen de grupo con el nombre que le asignes. El comando recibe todos los volumenes fisicos (que debes de haber creado antes) que quieras añadir al grupo. Estos se escriben separados por un espacio entre volumen y volumen
 

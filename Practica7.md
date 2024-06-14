@@ -156,3 +156,5 @@ restore <opciones>
     - *-t*: muestra el contenido de la copia de seguridad sin restaurar nada
 
     - *-f \<archivo>*: especifica el archivo de la copia de seguridad
+
+**Si te da errores** es posible que necesites colocarte con cd en el directorio en el que se encuentra el que se encuentra la copia hecha   

@@ -387,6 +387,8 @@ Description=< Descripcion del timer >
 WantedBy=timers.target
 ~~~
 
+**Si el .timer no tiene el mismo nombre que el servicio** se puede hacer tambien pero hay que especificar en las etiquetas `[Unit] Requires` y `[Unit] After` el timer creado 
+
 Estas son algunas de las directivas que puedes añadirle al [Timer]:
 
 - *OnBootSec*: Tiempo que debe transcurrir después de que el sistema arranque. Ejemplo: `OnBootSec=10min` (El temporizador se activa 10 minutos después del arranque del sistema). Para este y el resto que utilice tiempos se pueden usar los siguietnes:

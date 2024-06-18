@@ -93,11 +93,11 @@ mdadm --create <direccion> --level=<nivel_raid> --raid-devices=<numero_de_discos
 
 - *numero_de_discos*: el numero de discos activos que se usara, el resto seran de reserva
 
-- *lista_de_discos*: se escribe la direccion de todos los discos que se usaran separados por espacios, todos deben de ser particiones con [``gdisck``](Practica2.md#hacer_part)
+- *lista_de_discos*: se escribe la direccion de todos los discos que se usaran separados por espacios, todos deben de ser particiones con [``gdisk``](Practica2.md#hacer_part)
 
 #### Recuperar un disco <a id="raid_recuperate">
 
-Para recuperar un disco hay que eliminar<sub>1</sub> de la RAID el disco que este dañado, despues crear una nueva particion identica con [``gdisck``](Practica2.md#hacer_part)<sub>2</sub>, y añadirlo<sub>3</sub> a la RAID. Para hacer esto hay que usar los siguientes comandos:
+Para recuperar un disco hay que eliminar<sub>1</sub> de la RAID el disco que este dañado, despues crear una nueva particion identica con [``gdisk``](Practica2.md#hacer_part)<sub>2</sub>, y añadirlo<sub>3</sub> a la RAID. Para hacer esto hay que usar los siguientes comandos:
 
 ~~~bash
 mdadm /dev/md0 -r /dev/sdc1

@@ -333,7 +333,7 @@ Group=grupo
 WantedBy=multi-user.target
 ~~~
 
-Se puede usar el archivo ``/usr/lib/systemd/system/cron.service`` como plantilla y ir editnadole, haces una copia y lo modificas.  
+Se puede usar el archivo ``/lib/systemd/system/cron.service`` como plantilla y ir editnadole, haces una copia y lo modificas.  
 Este tipo de archivos tiene 3 partes con diferentes directivas:
 - [\[Unit\]](#impl_servicios_unit)
 - [\[Service\]](#impl_servicios_service)

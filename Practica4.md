@@ -81,6 +81,8 @@ Para añadir un repositorio nuevo hay que añadirlo al archivo *``/etc/apt/sourc
 <tipo_archivo> <URL> <distribucion> <componentes>
 ~~~
 
+Es importante que **la distribucion sea de la misma version que el debian actual**, para ver la version de debian actual se puede usar el comando ``lsb_release -a``, te saldra la distribucion en el campo *Description*, al final, entre los parentesis
+
 Esta te la daran. Despues es posible que el repositorio necesite una clave para usarse. La clave es un archivo, este se descarga con el comando ``wget`` y la URL. Una vez descargado este, hay que ejecutar el siguiente comando para añadir la clave al sistema:
 
 ~~~

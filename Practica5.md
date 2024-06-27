@@ -97,7 +97,7 @@ Puedes interactuar con esta tabla de las siguientes maneras:
 
 Sirve para transformar "nombres" en IPs, para hacer esto hay dos formas:
 
-- **El archivo ``/ect/hosts``:** en este archivo se pueden introducir la IP y el nombre que se le quiere asignar
+- **El archivo ``/etc/hosts``:** en este archivo se pueden introducir la IP y el nombre que se le quiere asignar
 
 - **Domain name service (DNS):** un servidor dedicado para realizar las traducciones de los nombres. Para configurar toda la información sobre el DNS a usar se hace en el archivo [``/etc/resolv.conf``](#arch_conf_dns). Hay que tener en cuenta que si se esta utilizando DHCP (selección de IP dinámica) este servidor lo asignara el protocolo por lo que te pisara los servidores que hayas configurado en el archivo
 

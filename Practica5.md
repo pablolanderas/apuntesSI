@@ -107,6 +107,8 @@ En el archivo ``/etc/resolv.conf`` se puede configurar el uso del servidor de no
 
 - ``search``: nos permite definir una lista de dominios que se utilizarán para completar los nombre cortos, antes de buscarlos. Los dominios de la lista deberán de ir separados por espacios o tabuladores, no pudiendo superar los 6 dominios, con un total de 256 caracteres. Un ejemplo seria por ejemplo si estubiera el siguiente codigo ``search zeppelinux.es zeppelinux.com``, si se itentara hacer un ``ping www``, lo primero que hará será buscar *www.zeppelinux.es*, si no se encuentra, probará con *www.zeppelinux.com* y por último intentará resolver el nombre *www*
 
+- ``domain``: la directiva domain funciona parecido que ``search``. Cuando estan escritas las 2, se utiliza la ultima ya que son excluyentes. La diferencia entre estas 2 es que con ``search`` puedes escribir una lista de dominios, mientras que con domain, solo se podria utilizar uno
+
 - ``nameserver``: se introduce la direccion IP de servidor DNS, se pueden introducir varios, si falla el primero prueba con el siguiente en orden descendente.
 
 ### Utilizar el ordenador como router (ruteador) <a id="routeador">

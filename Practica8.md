@@ -162,8 +162,8 @@ Para activar y desactivar las cuotas se utilizan los comandos  ``quotaon``/``quo
 Para editar las cuotas de un usuario o un grupo (añadiendo `-g ` antes del nombre) se utiliza el comando `edquota <user>` este te abre un editor de texto con una tabla en la que puedes ver y editar los siguientes valores:
 
 - *blocks*: Número de bloques de 1KB que el usuario está utilizando.
-- *soft*: Límite de advertencia de bloques.
-- *hard*: Límite estrictamente máximo de bloques.
+- *soft*: Límite de advertencia de bloques (en vez de bloques, puedes por ejemplo escribir M para que sean MB).
+- *hard*: Límite estrictamente máximo de bloques (en vez de bloques, puedes por ejemplo escribir M para que sean MB).
 - *inodes*: Número de inodos que el usuario está utilizando.
 - *soft y hard para inodos*: Límites de advertencia y máximos de inodos
 
